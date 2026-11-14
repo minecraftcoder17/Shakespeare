@@ -13,19 +13,24 @@
         // History of Henry IV, Part I
 
         const textbox = document.getElementById("text")
-        textbox.innerHTML = 1234
+        textbox.innerHTML = letterafter("e",textfile)
 
+        let textrunning = "Henry"
+        for (let i = 0; i < 5000; i++) {
+            textrunning = textrunning+letterafter(textrunning.slice(-8), textfile)
+        }
+        textbox.innerHTML = textrunning
 
+        function letterafter(substring, fulltext){
+            return fulltext[getstringpos(substring,fulltext)+substring.length]
+        }
 
-
-
-
-        function getstringpos(string, text){
-            let i = Math.random()*text.length
-            if(-1 != text.indexOf(string, Math.floor(i))){
-                return(text.indexOf(string, Math.floor(i)))
+        function getstringpos(substring, fulltext){
+            let i = Math.random()*fulltext.length
+            if(-1 != fulltext.toString().indexOf(substring, Math.floor(i))){
+                return(fulltext.toString().indexOf(substring, Math.floor(i)))
             }else{
-                return(text.indexOf(string, 0))
+                return(fulltext.toString().indexOf(substring, 0))
             }
         }
         // get the position of the string
