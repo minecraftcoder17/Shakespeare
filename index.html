@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+    <button id="buttonregenerate" onclick="regenerate()">regenerate thy text</button> 
     <p id="text"></p>
 
     <script>
@@ -688,6 +689,17 @@ His brother's death at Bristol, the Lord Scroop.`
 
         
         // get the position of the string
+        function regenerate(){
+            textbox.innerHTML = "Loading..."
+
+            var textrunning = "You "
+            for (let i = 0; i < 50000; i++) {
+                textrunning = textrunning+letterafter(textrunning.slice(-3), textfile)
+            }
+            textbox.innerHTML = textrunning.replaceAll(';',' egg ')
+
+        }
+    
     </script>
 
 </body>
