@@ -12,15 +12,129 @@
             text-align: center;
             margin-left: 20%;
             margin-right: 20%;
+            font-size: large;
         }
     </style>
 </head>
 <body>
-    <button id="buttonregenerate" onclick="regenerate()">regenerate thy text</button><input type="range" id="coherence" min=1 max="5"></input> 
+    <h1>Shakespeare</h1>
+    <button id="buttonregenerate" onclick="regenerate(trainingshakespeare)">regenerate thy text</button><button id="buttonregenerate" onclick="regenerate(traininglatin)">regenerate thy text latin</button><input type="range" id="coherence" min=1 max="5"></input> 
     <p id="text"></p>
 
     <script>
-        const training = `Henry IV. So shaken as we are, so wan with care,
+        const traininglatin = `Lorem Ipsum
+Tam commoti, tam macilentis cura,
+Tempus invenimus paci pavidae anhelandae,
+Et breves sonos novorum iurgiorum spirandos
+Incipiendos in filis remotis. The
+Non amplius sitibundus huius soli aditus
+Labra sua sanguine liberorum suorum oblinet;
+Nec amplius bellum fossans agros eius perfundet,
+Nec flores eius ungulis armatis
+Passuum hostilium conteret: illi oculi oppositi,
+Qui, velut meteora caeli turbati,
+Omnes unius naturae, unius substantiae nati,
+Nuper in intestino impetu
+Et furiosa caede civilis convenerunt
+Nunc, in ordinibus mutuis bene decentibus,
+Omnes una via incedent et non amplius adversarii erunt
+Contra notos, cognatos et socios:
+Acies belli, velut culter male vaginatus,
+Non amplius dominum suum vulnerabit. Ergo, amici,
+Quantum ad sepulcrum Christi,
+Cuius miles nunc, sub cuius cruce benedicta
+Impressi et ad pugnam admoti sumus,
+Statim copias Anglorum conscribemus;
+Quorum brachia in utero matrum formata sunt
+Ad persequendos hos paganos in illis agris sacris
+Per quorum agros ambulaverunt illi pedes benedicti
+Qui ante annos mille quadringentos ficti sunt
+Pro nostro commodo in cruce amara.
+Sed hoc nostrum propositum nunc duodecim menses natus est,
+Et frustra est vobis dicere nos ituros:
+Ideo nunc non convenimus. Tum audiam
+De te, mi consobrine mi Westmoreland,
+Quid heri concilium nostrum decrevit
+In promovenda hac cara expeditione.
+
+Domine mi, haec festinatio ardenter in quaestione erat,
+Et multi fines impetus positi
+Sed heri: cum omnes trans adversos advenerunt
+Nuntii e Cambria gravibus nuntiis onusti;
+Cuius pessimum erat, quod nobilis Mortimerus,
+Ducens viros Herefordienses ad pugnam
+Contra Glendowerum irregularem et ferum,
+A manibus rudibus illius Cambrici captus est,
+Mille hominum suorum trucidatus est;
+In cuius cadavere mortuo tantus abusus fuit,
+Talis transformatio ferina et impudens,
+A feminis illis Cambricis facta qualis non potest
+Sine magna pudore narrari aut de ea loqui.
+Videtur igitur nuntius huius tumultus
+Negotia nostra pro Terra Sancta intermittere.
+
+Hoc cum aliis comparatum fecit, domine mi benigne;
+Nuntii enim inaequales et ingratiores
+A septentrione venerunt, et sic se tulerunt:
+Die Sacrae Crucis, fortis Hotspur illic,
+Iuvenis Henricus Percy et fortis Archibaldus,
+Ille semper fortis et probatus Scotus,
+Apud Holmedon convenerunt,
+Ubi horam tristem et cruentam egerunt,
+Quasi per emissionem tormentorum suorum,
+Et speciem probabilitatis, nuntius divulgatus est;
+Nam qui eos adduxit, in ipso calore
+Et superbia contentionis eorum equum ascendit,
+Incertus de exitu ullo modo.
+Hic est carus, verus et industrius amicus,
+Dominus Gualterus Blunt, nuper ex equo suo demissus.
+Maculatus variatione cuiusque soli
+Inter illam Holmedon et hanc sedem nostram;
+Et nobis nuntios leves et gratos attulit.
+Comes Douglasiensis perculsus est:
+Decem milia audacium Scotorum, viginti duo equites,
+Suo sanguine perculsos Dominus Walterus vidit
+In campis Holmedon. Ex captivis, Hotspur cepit
+Mordake, comitem Fifeniae, filiumque natu maximum
+Ad Douglasium victum; et comitem Atholiae,
+De Murray, Angus, et Menteith:
+Et nonne haec praeda honorabilis est?
+Praemium magnificum? Ha, consobrine, nonne est?
+
+In fide,
+Est victoria principi qua gloriari.
+Immo, ibi me tristem facis et me peccare facis
+In invidia quod Dominus meus Northumbria
+Pater esse debet tam beato filio,
+Filio qui est thema linguae honoris;
+Inter lucum, planta rectissima;
+Quis est dulcis Fortunae famulus et eius decus:
+Dum ego, laudem eius spectans,
+Video tumultum et ignominiam frontem
+Iuvenis mei Henrici maculare. Utinam probari posset
+Quamdam nocturnam nympham permutasse
+In cunabulis liberos nostros ubi iacebant,
+Et meum Percy, Plantagenetam suum appellasse!
+Tum vellem eius Henricum habere, et eum meum.
+Sed eum ex cogitationibus meis omitte. Quid tibi videtur, custos,
+De huius iuvenis Percy decus? Captivos,
+Quos in hac aventura decepit,
+Ad usum suum servat; et mihi nuntium mittit,
+Me nullum habebo nisi Mordake comitem Fifeniae.
+
+Haec est doctrina avunculi sui; haec est Vigornia,
+Malevola tibi in omnibus aspectibus;
+Quae eum facit se ipsum expurgare, et horrere
+Cristam iuventutis contra dignitatem tuam.
+Sed eum misi ut huic respondeat;
+Et ob hanc causam aliquamdiu neglegere debemus
+Sanctum nostrum propositum Hierosolymae.
+Consobrine, proxima Mercurii die concilium nostrum
+Vinesoriae habebimus; ergo dominos certiores fac:
+Sed ipse celeriter ad nos redi;
+Nam plura dicenda et agenda sunt
+Quam ex ira dici potest.`
+        const trainingshakespeare = `Henry IV. So shaken as we are, so wan with care,
 Find we a time for frighted peace to pant,
 And breathe short-winded accents of new broils
 To be commenced in strands afar remote.
@@ -901,7 +1015,7 @@ For private persons, in their private home,
 	As those descended from illustrious blood
 In public view of greatness, whence they come.`
         // History of Henry IV, Part I, and other shakespeare
-const textfile = training
+        
         const textbox = document.getElementById("text")
         textbox.innerHTML = "Loading..."
 
@@ -909,7 +1023,7 @@ const textfile = training
 
         function letterafter(substring, fulltext){
             let content = fulltext[getstringpos(substring,fulltext)+substring.length]
-            if (content == undefined){content=" Henry IV. So shaken as we are, so wa"}
+            if (content == undefined){content=" The"}
             return(content)
         }
 
@@ -937,12 +1051,14 @@ const textfile = training
 
         
         // get the position of the string
-        function regenerate(){
+        function regenerate(textqwerty){
+            let textfile = textqwerty
+
             textbox.innerHTML = "Loading..."
             let sentences = 0
             let length = 0
-            var textrunning = "A"
-            for (let i = 0; i < 1500; i++) {
+            var textrunning = "The"
+            for (let i = 0; i < 4500; i++) {
                 textrunning = textrunning+letterafter(textrunning.slice(-document.getElementById("coherence").value), textfile)
                 length += 1
                 if (length>150){
@@ -955,7 +1071,7 @@ const textfile = training
                     textrunning= textrunning.slice(0, -1)
                 }}
 
-                if(sentences == 3){break}
+                if(sentences == 10){break}
                 if(textrunning.slice(-1)=="."){
                     sentences+=1;
                     length = 0
