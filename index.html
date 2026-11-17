@@ -20,7 +20,7 @@
     <p id="text"></p>
 
     <script>
-        const textfile = `Henry IV. So shaken as we are, so wan with care,
+        const training = `Henry IV. So shaken as we are, so wan with care,
 Find we a time for frighted peace to pant,
 And breathe short-winded accents of new broils
 To be commenced in strands afar remote.
@@ -253,8 +253,6 @@ Act I, Scene
 London. An apartment of the Prince’s.
 
    	next scene .
----
-[Enter the PRINCE OF WALES and FALSTAFF]
 
 Falstaff. Now, Hal, what time of day is it, lad?
 Henry V. Thou art so fat-witted, with drinking of old sack
@@ -356,7 +354,6 @@ Henry V. I see a good amendment of life in thee; from praying
 to purse-taking.
 Falstaff. Why, Hal, 'tis my vocation, Hal; 'tis no sin for a
 man to labour in his vocation.
-[Enter POINS]
 Poins! Now shall we know if Gadshill have set a
 match. O, if men were to be saved by merit, what
 hole in hell were hot enough for him? This is the
@@ -904,7 +901,7 @@ For private persons, in their private home,
 	As those descended from illustrious blood
 In public view of greatness, whence they come.`
         // History of Henry IV, Part I, and other shakespeare
-
+const textfile = training
         const textbox = document.getElementById("text")
         textbox.innerHTML = "Loading..."
 
@@ -943,13 +940,28 @@ In public view of greatness, whence they come.`
         function regenerate(){
             textbox.innerHTML = "Loading..."
             let sentences = 0
-            var textrunning = "You "
-            for (let i = 0; i < 500; i++) {
+            let length = 0
+            var textrunning = "A"
+            for (let i = 0; i < 1500; i++) {
                 textrunning = textrunning+letterafter(textrunning.slice(-document.getElementById("coherence").value), textfile)
-                if(sentences == 5){break}
-                if(textrunning.slice(-1)=="."){sentences+=1}
+                length += 1
+                if (length>150){
+                    if(textfile.includes(textrunning.slice(-document.getElementById("coherence").value)+"."))
+                    textrunning = textrunning+"."
+
+                }
+                if (length<50){
+                    if(textrunning.slice(-1)=="." && Math.random()<0.9){
+                    textrunning= textrunning.slice(0, -1)
+                }}
+
+                if(sentences == 3){break}
+                if(textrunning.slice(-1)=="."){
+                    sentences+=1;
+                    length = 0
+                }
             }
-            textbox.innerHTML = textrunning.replaceAll(';',' egg ')
+            textbox.innerHTML = textrunning.replaceAll(';', ".").replaceAll(' .', ".").replaceAll("[", "").replaceAll("]", "")
 
         }
     
