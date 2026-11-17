@@ -8,12 +8,15 @@
         p {font-family: "Georgia", "Times New Roman", Times, serif;}
         body {
             background-color: blanchedalmond;
-            color:rgb(19, 18, 16)
+            color:rgb(19, 18, 16);
+            text-align: center;
+            margin-left: 20%;
+            margin-right: 20%;
         }
     </style>
 </head>
 <body>
-    <button id="buttonregenerate" onclick="regenerate()">regenerate thy text</button> 
+    <button id="buttonregenerate" onclick="regenerate()">regenerate thy text</button><input type="range" id="coherence" min=1 max="5"></input> 
     <p id="text"></p>
 
     <script>
@@ -653,11 +656,7 @@ His brother's death at Bristol, the Lord Scroop.`
         const textbox = document.getElementById("text")
         textbox.innerHTML = "Loading..."
 
-        var textrunning = "You "
-        for (let i = 0; i < 50000; i++) {
-            textrunning = textrunning+letterafter(textrunning.slice(-3), textfile)
-        }
-        textbox.innerHTML = textrunning.replaceAll(';',' egg ')
+        regenerate()
 
         function letterafter(substring, fulltext){
             let content = fulltext[getstringpos(substring,fulltext)+substring.length]
@@ -691,10 +690,12 @@ His brother's death at Bristol, the Lord Scroop.`
         // get the position of the string
         function regenerate(){
             textbox.innerHTML = "Loading..."
-
+            let sentences = 0
             var textrunning = "You "
-            for (let i = 0; i < 50000; i++) {
-                textrunning = textrunning+letterafter(textrunning.slice(-3), textfile)
+            for (let i = 0; i < 500; i++) {
+                textrunning = textrunning+letterafter(textrunning.slice(-document.getElementById("coherence").value), textfile)
+                if(sentences == 5){break}
+                if(textrunning.slice(-1)=="."){sentences+=1}
             }
             textbox.innerHTML = textrunning.replaceAll(';',' egg ')
 
