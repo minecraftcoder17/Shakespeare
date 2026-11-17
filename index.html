@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakespeare</title>
+    <title>Placeholder Text Generator</title>
     <style>
         p {font-family: "Georgia", "Times New Roman", Times, serif;}
         body {
@@ -17,8 +17,16 @@
     </style>
 </head>
 <body>
-    <h1>Shakespeare</h1>
-    <button id="buttonregenerate" onclick="regenerate(trainingshakespeare)">regenerate thy text</button><button id="buttonregenerate" onclick="regenerate(traininglatin)">regenerate thy text latin</button><input type="range" id="coherence" min=1 max="5"></input> 
+    <h1>Placeholder Text Generator</h1>
+    <button id="buttonregenerate" onclick="regenerate(trainingshakespeare)">Generate Shakespeare Placeholder</button>
+    <br>
+    <button id="buttonregenerate" onclick="regenerate(traininglatin)">Generate Latin Placeholder</button>
+    <br>
+    <button id="buttonregenerate" onclick="regenerate(trainingcode)">Generate Pseudocode Placeholder (doesn't work but is occasionally cool)</button>
+    <br>
+    <input type="range" id="coherence" min=1 max="5">Coherence</input> <br>
+    <input type="range" id="length" min=1 max="5">Length</input> 
+
     <p id="text"></p>
 
     <script>
@@ -1015,7 +1023,7 @@ For private persons, in their private home,
 	As those descended from illustrious blood
 In public view of greatness, whence they come.`
         // History of Henry IV, Part I, and other shakespeare
-        
+        const trainingcode = `const textbox = document.getElementById("text") textbox.innerHTML = "Loading..." regenerate() function letterafter(substring, fulltext){ let content = fulltext[getstringpos(substring,fulltext)+substring.length] if (content == undefined){content=" The"} return(content) } function getstringpos(substring, fulltext){ //let i = Math.random()*fulltext.length //  if(-1 != fulltext.toString().indexOf(substring, Math.floor(i))){ //  return(fulltext.toString().indexOf(substring, Math.floor(i))) //}else{ //      return(fulltext.toString().indexOf(substring, 0)) //    } const startingIndices = []; let indexOccurence = fulltext.indexOf(substring, 0); while(indexOccurence >= 0) { startingIndices.push(indexOccurence); indexOccurence = fulltext.indexOf(substring, indexOccurence + 1); // based off of https://stackoverflow.com/a/56446943 } return(startingIndices[Math.floor(Math.random()*startingIndices.length)]) } // get the position of the string function regenerate(textqwerty){ let textlength = document.getElementById("length").value let textfile = textqwerty textbox.innerHTML = "Loading..." let sentences = 0 let length = 0 var textrunning = "The" for (let i = 0; i < 500*(2**textlength); i++) { textrunning = textrunning+letterafter(textrunning.slice(-document.getElementById("coherence").value), textfile) length += 1 if (length>150){ if(textfile.includes(textrunning.slice(-document.getElementById("coherence").value)+".")) textrunning = textrunning+"." } if (length<50){ if(textrunning.slice(-1)=="." && Math.random()<0.9){ textrunning= textrunning.slice(0, -1) }} if(sentences == (2**(textlength-1))){break} if(textrunning.slice(-1)=="."){ sentences+=1; length = 0 } } textbox.innerHTML = textrunning.replaceAll(';', ".").replaceAll(' .', ".").replaceAll("[", "").replaceAll("]", "") }`
         const textbox = document.getElementById("text")
         textbox.innerHTML = "Loading..."
 
@@ -1052,13 +1060,14 @@ In public view of greatness, whence they come.`
         
         // get the position of the string
         function regenerate(textqwerty){
+            let textlength = document.getElementById("length").value
             let textfile = textqwerty
 
             textbox.innerHTML = "Loading..."
             let sentences = 0
             let length = 0
             var textrunning = "The"
-            for (let i = 0; i < 4500; i++) {
+            for (let i = 0; i < 500*(2**textlength); i++) {
                 textrunning = textrunning+letterafter(textrunning.slice(-document.getElementById("coherence").value), textfile)
                 length += 1
                 if (length>150){
@@ -1071,7 +1080,7 @@ In public view of greatness, whence they come.`
                     textrunning= textrunning.slice(0, -1)
                 }}
 
-                if(sentences == 10){break}
+                if(sentences == (2**(textlength-1))){break}
                 if(textrunning.slice(-1)=="."){
                     sentences+=1;
                     length = 0
